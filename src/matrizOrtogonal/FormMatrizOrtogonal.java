@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class InterfazMatrizOrtogonal extends JFrame {
+public class FormMatrizOrtogonal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +35,7 @@ public class InterfazMatrizOrtogonal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfazMatrizOrtogonal frame = new InterfazMatrizOrtogonal();
+					FormMatrizOrtogonal frame = new FormMatrizOrtogonal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class InterfazMatrizOrtogonal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InterfazMatrizOrtogonal() {
+	public FormMatrizOrtogonal() {
 		setTitle("Matriz Ortogonal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 622);
@@ -172,7 +172,14 @@ public class InterfazMatrizOrtogonal extends JFrame {
 					lblMensaje.setText("Debe ingresar los datos del vehículo.");
 				} else {
 					lblMensaje.setText("");
+					System.out.println("Fila :" + fila);
+					System.out.println("columna :" + columna);
+					System.out.println("base :" + base);
+					System.out.println("linea :" + linea);
+					System.out.println("propietario :" + propietario);
+					matrizOrtogonal.crearMatriz(Integer.valueOf(base),Integer.valueOf(altura));
 					matrizOrtogonal.insertar(0, 0, automovil);
+					
 				}
 			}
 		});
