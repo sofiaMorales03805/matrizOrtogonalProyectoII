@@ -18,7 +18,12 @@ public class MatrizOrtogonal {
 	    public MatrizOrtogonal() {
 			// TODO Auto-generated constructor stub
 		}
-
+	    
+	    public void crearMatriz(int filas, int columnas) {
+	    	//Crea la matriz con el numero ingresado por el usuario.
+	    	MatrizOrtogonal matriz = new MatrizOrtogonal(filas, columnas);
+	    }
+	    
 		public void insertar(int fila, int columna, Automovil automovil) {
 	        if (fila >= filas || columna >= columnas || fila < 0 || columna < 0) {
 	            System.out.println("Índices fuera de rango.");
@@ -134,12 +139,13 @@ public class MatrizOrtogonal {
 	        return cadena.matches("[a-zA-Z]+");
 	    }
 	    
-	    public static void main(String[] args) {
+	  	    
+	    /*public static void main(String[] args) {
 	        MatrizOrtogonal matriz = new MatrizOrtogonal(3, 3);
 	        matriz.insertar(0, 0, new Automovil("ABC123", "Rojo", "Sedán", "2022", "Juan Pérez"));
 	        matriz.insertar(1, 1, new Automovil("DEF456", "Azul", "SUV", "2023", "María Gómez"));
 	        matriz.insertar(2, 2, new Automovil("GHI789", "Negro", "Camioneta", "2021", "Luis García"));
 	        matriz.insertar(0, 1, new Automovil("GHI799", "Gris", "Sedán", "2010", "Fernando Coyoy"));	
 	        matriz.imprimirMatriz();
-	    }
+	    }*/
 }
