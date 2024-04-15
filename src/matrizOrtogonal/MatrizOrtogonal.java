@@ -3,29 +3,39 @@ package matrizOrtogonal;
 import java.util.regex.Pattern;
 
 public class MatrizOrtogonal {
+		int filas;
+		int columnas;
+		private int tamanioMatriz;
 	    NodoFila primeraFila;
 	    NodoColumna primeraColumna;
-	    int filas;
-	    int columnas;
+	    
+	    
+	    
+	    public int getTamanioMatriz() {
+			return tamanioMatriz;
+		}
 
-	    public MatrizOrtogonal(int filas, int columnas) {
-	        this.filas = filas;
-	        this.columnas = columnas;
+		public void setTamanioMatriz(int tamanioMatriz) {
+			this.tamanioMatriz = tamanioMatriz;
+		}
+
+		public MatrizOrtogonal( int filas, int columnas, int tamanioMatriz) {  
 	        this.primeraFila = null;
 	        this.primeraColumna = null;
+	        this.filas = filas;
+	        this.columnas = columnas;
+	        this.tamanioMatriz = tamanioMatriz;
+	        
 	    }
 
 	    public MatrizOrtogonal() {
 			// TODO Auto-generated constructor stub
 		}
 	    
-	    public void crearMatriz(int filas, int columnas) {
-	    	//Crea la matriz con el numero ingresado por el usuario.
-	    	MatrizOrtogonal matriz = new MatrizOrtogonal(filas, columnas);
-	    }
 	    
-		public void insertar(int fila, int columna, Automovil automovil) {
-	        if (fila >= filas || columna >= columnas || fila < 0 || columna < 0) {
+		public void insertar(int fila, int columna, Automovil automovil, int tamanioMatriz) {
+			System.out.println("Tamanio de matriz: " +  tamanioMatriz);
+	        if (fila >= tamanioMatriz || columna >= tamanioMatriz || fila < 0 || columna < 0) {
 	            System.out.println("Índices fuera de rango.");
 	            return;
 	        }
@@ -105,10 +115,10 @@ public class MatrizOrtogonal {
 	    }
 
 	    public void imprimirMatriz() {
-	        for (int i = 0; i < filas; i++) {
+	        for (int i = 0; i < tamanioMatriz; i++) {
 	            NodoFila fila = obtenerNodoFila(i);
 	            NodoColumna actual = fila.getDerecha();
-	            for (int j = 0; j < columnas; j++) {
+	            for (int j = 0; j < tamanioMatriz; j++) {
 	                if (actual != null && actual.getColumna() == j) {
 	                    System.out.print(actual.getAutomovil() + " | ");
 	                    actual = actual.getSiguiente();
@@ -140,12 +150,12 @@ public class MatrizOrtogonal {
 	    }
 	    
 	  	    
-	    /*public static void main(String[] args) {
-	        MatrizOrtogonal matriz = new MatrizOrtogonal(3, 3);
-	        matriz.insertar(0, 0, new Automovil("ABC123", "Rojo", "Sedán", "2022", "Juan Pérez"));
+	    public static void main(String[] args) {
+	        //MatrizOrtogonal matriz = new MatrizOrtogonal(3, 3);
+	        /*matriz.insertar(0, 0, new Automovil("ABC123", "Rojo", "Sedán", "2022", "Juan Pérez"));
 	        matriz.insertar(1, 1, new Automovil("DEF456", "Azul", "SUV", "2023", "María Gómez"));
 	        matriz.insertar(2, 2, new Automovil("GHI789", "Negro", "Camioneta", "2021", "Luis García"));
-	        matriz.insertar(0, 1, new Automovil("GHI799", "Gris", "Sedán", "2010", "Fernando Coyoy"));	
-	        matriz.imprimirMatriz();
-	    }*/
+	        matriz.insertar(0, 1, new Automovil("GHI799", "Gris", "Sedán", "2010", "Fernando Coyoy"));*/	
+	        //matriz.imprimirMatriz();
+	    }
 }

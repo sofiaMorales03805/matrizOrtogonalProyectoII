@@ -18,8 +18,7 @@ public class FormMatrizOrtogonal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textBase;
-	private JTextField textAltura;
+	private JTextField textTamanio;
 	private JTextField textPropietario;
 	private JTextField textPlaca;
 	private JTextField textModelo;
@@ -65,21 +64,16 @@ public class FormMatrizOrtogonal extends JFrame {
 		lblNewLabel.setBounds(99, 25, 261, 45);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Ingrese el tamaño de su parqueo, A x B");
+		JLabel lblNewLabel_1 = new JLabel("Ingrese el tamaño de su parqueo: ");
 		lblNewLabel_1.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 12));
 		lblNewLabel_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_1.setBounds(56, 92, 367, 13);
 		contentPane.add(lblNewLabel_1);
 
-		textBase = new JTextField();
-		textBase.setBounds(56, 125, 50, 25);
-		contentPane.add(textBase);
-		textBase.setColumns(10);
-
-		textAltura = new JTextField();
-		textAltura.setBounds(116, 125, 50, 25);
-		contentPane.add(textAltura);
-		textAltura.setColumns(10);
+		textTamanio = new JTextField();
+		textTamanio.setBounds(56, 125, 50, 25);
+		contentPane.add(textTamanio);
+		textTamanio.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Ingrese los datos del vehículo:");
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
@@ -151,36 +145,52 @@ public class FormMatrizOrtogonal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
 
+				String tamanio = textTamanio.getText();
+				boolean tamanioIngresado = false;
 				String fila = textFila.getText();
 				String columna = textColumna.getText();
-				String altura = textAltura.getText();
-				String base = textBase.getText();
 				String color = textColor.getText();
 				String linea = textLinea.getText();
 				String modelo = textModelo.getText();
 				String placa = textPlaca.getText();
 				String propietario = textPropietario.getText();
 
-				if (matrizOrtogonal.esAlfanumerico(placa) || matrizOrtogonal.esNumero(altura) || matrizOrtogonal.esNumero(fila) || matrizOrtogonal.esNumero(columna) || matrizOrtogonal.esNumero(base)  || matrizOrtogonal.esNumero(modelo) || matrizOrtogonal.sonSoloLetras(color) ) {
-					lblMensaje.setText("No es un formato permitido para este campo.");
-				}
-				
-				Automovil automovil = new Automovil(color, linea, modelo, placa, propietario);
+				// Verifica si ya se ha ingresado el tamaño de la matriz
+				if (!tamanioIngresado) {
+					// Verifica que el tamaño sean número válido
+					if (matrizOrtogonal.esNumero(tamanio)) {
+						int tamanioMatriz = Integer.parseInt(tamanio);
 
-				if (altura.equals("") || base.equals("") || color.equals("") || linea.equals("") || modelo.equals("")
-						|| placa.equals("") || propietario.equals("") || fila.equals("") || columna.equals("")) {
-					lblMensaje.setText("Debe ingresar los datos del vehículo.");
-				} else {
-					lblMensaje.setText("");
-					System.out.println("Fila :" + fila);
-					System.out.println("columna :" + columna);
-					System.out.println("base :" + base);
-					System.out.println("linea :" + linea);
-					System.out.println("propietario :" + propietario);
-					matrizOrtogonal.crearMatriz(Integer.valueOf(base),Integer.valueOf(altura));
-					matrizOrtogonal.insertar(0, 0, automovil);
-					
+						textTamanio.setEditable(false);
+						matrizOrtogonal = new MatrizOrtogonal(Integer.parseInt(fila), Integer.parseInt(columna),
+								tamanioMatriz);
+						matrizOrtogonal.setTamanioMatriz(tamanioMatriz);
+						tamanioIngresado = true; // Marca que ya se ha ingresado el tamaño de la matriz
+
+						Automovil automovil = new Automovil(color, linea, modelo, placa, propietario);
+
+						if (tamanio.equals("") || color.equals("") || linea.equals("") || modelo.equals("")
+								|| placa.equals("") || propietario.equals("") || fila.equals("")
+								|| columna.equals("")) {
+							lblMensaje.setText("Debe ingresar los datos del vehículo.");
+						} else {
+							lblMensaje.setText("");
+							matrizOrtogonal.insertar(Integer.valueOf(fila), Integer.valueOf(columna), automovil,
+									Integer.valueOf(tamanio));
+							matrizOrtogonal.imprimirMatriz();
+							textColor.setText("");
+							textLinea.setText("");
+							textModelo.setText("");
+							textPlaca.setText("");
+							textPropietario.setText("");
+
+						}
+					} else {
+						lblMensaje.setText("El tamaño deben ser número válido.");
+					}
 				}
+				// Utiliza el tamaño de la matriz ingresado previamente
+				matrizOrtogonal.setTamanioMatriz(Integer.parseInt(tamanio));
 			}
 		});
 
@@ -189,6 +199,7 @@ public class FormMatrizOrtogonal extends JFrame {
 
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
@@ -200,8 +211,6 @@ public class FormMatrizOrtogonal extends JFrame {
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textAltura.setText("");
-				textBase.setText("");
 				textColor.setText("");
 				textLinea.setText("");
 				textModelo.setText("");
