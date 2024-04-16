@@ -42,6 +42,8 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 	}
+	//Instancia de la clase matriz donde estan los metodos
+	MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
 
 	/**
 	 * Create the frame.
@@ -143,8 +145,7 @@ public class FormMatrizOrtogonal extends JFrame {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
-
+	
 				String tamanio = textTamanio.getText();
 				boolean tamanioIngresado = false;
 				String fila = textFila.getText();
@@ -162,8 +163,8 @@ public class FormMatrizOrtogonal extends JFrame {
 						int tamanioMatriz = Integer.parseInt(tamanio);
 
 						textTamanio.setEditable(false);
-						matrizOrtogonal = new MatrizOrtogonal(Integer.parseInt(fila), Integer.parseInt(columna),
-								tamanioMatriz);
+						matrizOrtogonal.setColumna(Integer.parseInt(columna));
+						matrizOrtogonal.setFila(Integer.parseInt(fila));
 						matrizOrtogonal.setTamanioMatriz(tamanioMatriz);
 						tamanioIngresado = true; // Marca que ya se ha ingresado el tamaño de la matriz
 
@@ -216,6 +217,8 @@ public class FormMatrizOrtogonal extends JFrame {
 				textModelo.setText("");
 				textPlaca.setText("");
 				textPropietario.setText("");
+				textFila.setText("");
+				textColumna.setText("");
 			}
 		});
 		btnLimpiar.setBounds(194, 533, 85, 21);

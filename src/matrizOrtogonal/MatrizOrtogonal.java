@@ -3,15 +3,47 @@ package matrizOrtogonal;
 import java.util.regex.Pattern;
 
 public class MatrizOrtogonal {
-		int filas;
-		int columnas;
+		int fila;
+		int columna;
 		private int tamanioMatriz;
 	    NodoFila primeraFila;
 	    NodoColumna primeraColumna;
 	    
-	    
-	    
-	    public int getTamanioMatriz() {
+	    	    
+
+		public int getFila() {
+			return fila;
+		}
+
+		public void setFila(int fila) {
+			this.fila = fila;
+		}
+
+		public int getColumna() {
+			return columna;
+		}
+
+		public void setColumna(int columna) {
+			this.columna = columna;
+		}
+
+		public NodoFila getPrimeraFila() {
+			return primeraFila;
+		}
+
+		public void setPrimeraFila(NodoFila primeraFila) {
+			this.primeraFila = primeraFila;
+		}
+
+		public NodoColumna getPrimeraColumna() {
+			return primeraColumna;
+		}
+
+		public void setPrimeraColumna(NodoColumna primeraColumna) {
+			this.primeraColumna = primeraColumna;
+		}
+
+		public int getTamanioMatriz() {
 			return tamanioMatriz;
 		}
 
@@ -19,11 +51,11 @@ public class MatrizOrtogonal {
 			this.tamanioMatriz = tamanioMatriz;
 		}
 
-		public MatrizOrtogonal( int filas, int columnas, int tamanioMatriz) {  
+		public MatrizOrtogonal( int fila, int columna, int tamanioMatriz) {  
 	        this.primeraFila = null;
 	        this.primeraColumna = null;
-	        this.filas = filas;
-	        this.columnas = columnas;
+	        this.fila = fila;
+	        this.columna = columna;
 	        this.tamanioMatriz = tamanioMatriz;
 	        
 	    }
