@@ -45,6 +45,8 @@ public class FormMatrizOrtogonal extends JFrame {
 	//Instancia de la clase matriz donde estan los metodos
 	MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
 
+	private JButton btnConsultar;
+
 	/**
 	 * Create the frame.
 	 */
@@ -139,7 +141,7 @@ public class FormMatrizOrtogonal extends JFrame {
 		JLabel lblMensaje = new JLabel("");
 		lblMensaje.setForeground(new Color(128, 0, 64));
 		lblMensaje.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 11));
-		lblMensaje.setBounds(56, 505, 386, 18);
+		lblMensaje.setBounds(56, 505, 374, 18);
 		contentPane.add(lblMensaje);
 
 		JButton btnGuardar = new JButton("Guardar");
@@ -184,7 +186,8 @@ public class FormMatrizOrtogonal extends JFrame {
 							textModelo.setText("");
 							textPlaca.setText("");
 							textPropietario.setText("");
-
+							textFila.setText("");
+							textColumna.setText("");
 						}
 					} else {
 						lblMensaje.setText("El tamaño deben ser número válido.");
@@ -195,7 +198,7 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 
-		btnGuardar.setBounds(66, 533, 85, 21);
+		btnGuardar.setBounds(47, 533, 85, 21);
 		contentPane.add(btnGuardar);
 
 		JButton btnSalir = new JButton("Salir");
@@ -206,7 +209,7 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 		btnSalir.setForeground(new Color(0, 0, 0));
-		btnSalir.setBounds(324, 533, 85, 21);
+		btnSalir.setBounds(340, 533, 85, 21);
 		contentPane.add(btnSalir);
 
 		JButton btnLimpiar = new JButton("Limpiar");
@@ -221,7 +224,7 @@ public class FormMatrizOrtogonal extends JFrame {
 				textColumna.setText("");
 			}
 		});
-		btnLimpiar.setBounds(194, 533, 85, 21);
+		btnLimpiar.setBounds(243, 533, 85, 21);
 		contentPane.add(btnLimpiar);
 
 		JLabel lblNewLabel_8 = new JLabel("Ingrese lugar de parqueo:");
@@ -238,5 +241,14 @@ public class FormMatrizOrtogonal extends JFrame {
 		textColumna.setBounds(113, 470, 40, 25);
 		contentPane.add(textColumna);
 		textColumna.setColumns(10);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnConsultar.setBounds(148, 533, 85, 21);
+		contentPane.add(btnConsultar);
 	}
 }
