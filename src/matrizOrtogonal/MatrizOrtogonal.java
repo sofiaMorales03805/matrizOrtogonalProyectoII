@@ -2,6 +2,8 @@ package matrizOrtogonal;
 
 import java.util.regex.Pattern;
 
+import javax.swing.SwingUtilities;
+
 public class MatrizOrtogonal {
 		int fila;
 		int columna;
@@ -64,6 +66,7 @@ public class MatrizOrtogonal {
 			// TODO Auto-generated constructor stub
 		}
 	    
+	    private Automovil[][] matriz;
 	    
 		public void insertar(int fila, int columna, Automovil automovil, int tamanioMatriz) {
 			System.out.println("Tamanio de matriz: " +  tamanioMatriz);
@@ -181,13 +184,54 @@ public class MatrizOrtogonal {
 	        return cadena.matches("[a-zA-Z]+");
 	    }
 	    
-	  	    
-	    public static void main(String[] args) {
-	        //MatrizOrtogonal matriz = new MatrizOrtogonal(3, 3);
-	        /*matriz.insertar(0, 0, new Automovil("ABC123", "Rojo", "Sedán", "2022", "Juan Pérez"));
-	        matriz.insertar(1, 1, new Automovil("DEF456", "Azul", "SUV", "2023", "María Gómez"));
-	        matriz.insertar(2, 2, new Automovil("GHI789", "Negro", "Camioneta", "2021", "Luis García"));
-	        matriz.insertar(0, 1, new Automovil("GHI799", "Gris", "Sedán", "2010", "Fernando Coyoy"));*/	
-	        //matriz.imprimirMatriz();
+	    //Método Buscar
+	 // Método para buscar un automóvil por un atributo específico en la matriz
+	    public Automovil buscarAutomovilAtributo(String atributo, String valor) {
+	        for (int i = 0; i < fila; i++) {
+	            NodoFila nodoFila = obtenerNodoFila(i);
+	            NodoColumna actual = nodoFila.getDerecha();
+	            while (actual != null) {
+	                Automovil automovil = actual.getAutomovil();
+	                switch (atributo) {
+	                    case "placa":
+	                        if (automovil.getPlaca().equals(valor)) {
+	                            return automovil;
+	                        }
+	                        break;
+	                    case "color":
+	                        if (automovil.getColor().equals(valor)) {
+	                            return automovil;
+	                        }
+	                        break;
+	                    case "linea":
+	                        if (automovil.getLinea().equals(valor)) {
+	                            return automovil;
+	                        }
+	                        break;
+	                    case "modelo":
+	                        if (automovil.getModelo().equals(valor)) {
+	                            return automovil;
+	                        }
+	                        break;
+	                    case "propietario":
+	                        if (automovil.getPropietario().equals(valor)) {
+	                            return automovil;
+	                        }
+	                        break;
+	                    default:
+	                        System.out.println("Atributo no válido");
+	                        return null;
+	                }
+	                actual = actual.getSiguiente();
+	            }
+	        }
+	        System.out.println("No se encontró ningún automóvil con ese atributo y valor");
+	        return null;
 	    }
-}
+
+	    
+	    
+	    public static void main(String[] args) {
+	    	SwingUtilities.invokeLater(FormBuscarMatriz::new);
+		    }
+	}

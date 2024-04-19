@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
 public class FormMatrizOrtogonal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +47,7 @@ public class FormMatrizOrtogonal extends JFrame {
 	MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
 
 	private JButton btnConsultar;
-
+	private JButton btnBuscarM;
 	/**
 	 * Create the frame.
 	 */
@@ -250,5 +251,21 @@ public class FormMatrizOrtogonal extends JFrame {
 		});
 		btnConsultar.setBounds(148, 533, 85, 21);
 		contentPane.add(btnConsultar);
+		
+		
+		
+		
+		btnBuscarM  = new JButton("Buscar en Matriz");
+		btnBuscarM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormBuscarMatriz newframe = new FormBuscarMatriz();
+				//newframe.setVisible(true);
+				//dispose(); 
+			}
+
+			
+		});btnBuscarM.setBounds(273, 471, 150, 23);
+		contentPane.add(btnBuscarM);
+		
 	}
 }

@@ -45,6 +45,16 @@ public class NodoColumna {
 	public void setAbajo(NodoFila abajo) {
 		this.abajo = abajo;
 	}
+
+	public int getFila() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getFila() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
  
     
 }
