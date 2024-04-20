@@ -82,8 +82,6 @@ El botón de “Regresar” te permite regresar a la ventana anterior, es decir 
 
 ![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/166673675/efe2a856-3aa6-4a9e-9a0b-92d6cba14372)
 
-![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/9546826c-0007-4616-8ff2-59e44a556ed3)
-
 Botones funcionales dentro del menú principal:
 *Limpiar:* Este botón permite borrar la información escrita en la caja de texto, si en dado caso el vehículo no ha sido guardado, al momento de presionar limpiará todas las casillas de texto de forma automática.
 *Salir:* Este botón cuenta con la finalización de la aplicación, al presionar cerrará cualquier ventana que se encuentre abierta. 
