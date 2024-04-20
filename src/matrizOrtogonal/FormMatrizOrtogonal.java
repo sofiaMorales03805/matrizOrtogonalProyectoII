@@ -7,12 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 
 public class FormMatrizOrtogonal extends JFrame {
 
@@ -26,6 +29,20 @@ public class FormMatrizOrtogonal extends JFrame {
 	private JTextField textColor;
 	private JTextField textFila;
 	private JTextField textColumna;
+	private JLabel lblMensajeModelo;
+	private JLabel lblMensajeLinea;
+	private JLabel lblMensajeProp;
+	private JLabel lblMensajeFila;
+	private JLabel lblMensajePlaca;
+	private JLabel lblMensajeParqueos;
+	private JLabel lblMensajeColor;
+	private Automovil automovil;
+	
+	
+	
+	
+	//Instancia de la clase matriz donde estan los metodos
+		MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
 
 	/**
 	 * Launch the application.
@@ -42,11 +59,7 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 	}
-	//Instancia de la clase matriz donde estan los metodos
-	MatrizOrtogonal matrizOrtogonal = new MatrizOrtogonal();
-
-	private JButton btnConsultar;
-
+	private JButton btnBuscarM;
 	/**
 	 * Create the frame.
 	 */
@@ -141,7 +154,7 @@ public class FormMatrizOrtogonal extends JFrame {
 		JLabel lblMensaje = new JLabel("");
 		lblMensaje.setForeground(new Color(128, 0, 64));
 		lblMensaje.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 11));
-		lblMensaje.setBounds(56, 505, 374, 18);
+		lblMensaje.setBounds(49, 564, 374, 18);
 		contentPane.add(lblMensaje);
 
 		JButton btnGuardar = new JButton("Guardar");
@@ -152,11 +165,11 @@ public class FormMatrizOrtogonal extends JFrame {
 				boolean tamanioIngresado = false;
 				String fila = textFila.getText();
 				String columna = textColumna.getText();
-				String color = textColor.getText();
-				String linea = textLinea.getText();
-				String modelo = textModelo.getText();
-				String placa = textPlaca.getText();
-				String propietario = textPropietario.getText();
+				String color = textColor.getText().toUpperCase();
+				String linea = textLinea.getText().toUpperCase();
+				String modelo = textModelo.getText().toUpperCase();
+				String placa = textPlaca.getText().toUpperCase();
+				String propietario = textPropietario.getText().toUpperCase();
 
 				// Verifica si ya se ha ingresado el tamaño de la matriz
 				if (!tamanioIngresado) {
@@ -169,9 +182,25 @@ public class FormMatrizOrtogonal extends JFrame {
 						matrizOrtogonal.setFila(Integer.parseInt(fila));
 						matrizOrtogonal.setTamanioMatriz(tamanioMatriz);
 						tamanioIngresado = true; // Marca que ya se ha ingresado el tamaño de la matriz
-
-						Automovil automovil = new Automovil(color, linea, modelo, placa, propietario);
-
+							
+						automovil = new Automovil(placa, color, linea, modelo, propietario);
+						
+						if(!matrizOrtogonal.esNumero(modelo)) {
+							lblMensajeModelo.setText("Debe ingresar números");
+						}
+						
+						if(!matrizOrtogonal.esAlfanumerico(placa)) {
+							lblMensajePlaca.setText("Debe ingresar un alfanumérico y máximo de 8 dígitos");
+						}
+						if(!matrizOrtogonal.sonSoloLetras(color)) {
+								lblMensajeColor.setText("Debe ingresar solo letras.");
+						}
+											
+						if(!matrizOrtogonal.sonSoloLetras(linea)) {
+							lblMensajeLinea.setText("Debe ingresar solo letras.");
+						}
+					
+						
 						if (tamanio.equals("") || color.equals("") || linea.equals("") || modelo.equals("")
 								|| placa.equals("") || propietario.equals("") || fila.equals("")
 								|| columna.equals("")) {
@@ -198,7 +227,7 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 
-		btnGuardar.setBounds(47, 533, 85, 21);
+		btnGuardar.setBounds(47, 533, 106, 21);
 		contentPane.add(btnGuardar);
 
 		JButton btnSalir = new JButton("Salir");
@@ -209,7 +238,7 @@ public class FormMatrizOrtogonal extends JFrame {
 			}
 		});
 		btnSalir.setForeground(new Color(0, 0, 0));
-		btnSalir.setBounds(340, 533, 85, 21);
+		btnSalir.setBounds(311, 533, 112, 21);
 		contentPane.add(btnSalir);
 
 		JButton btnLimpiar = new JButton("Limpiar");
@@ -224,7 +253,7 @@ public class FormMatrizOrtogonal extends JFrame {
 				textColumna.setText("");
 			}
 		});
-		btnLimpiar.setBounds(243, 533, 85, 21);
+		btnLimpiar.setBounds(185, 533, 106, 21);
 		contentPane.add(btnLimpiar);
 
 		JLabel lblNewLabel_8 = new JLabel("Ingrese lugar de parqueo:");
@@ -242,13 +271,51 @@ public class FormMatrizOrtogonal extends JFrame {
 		contentPane.add(textColumna);
 		textColumna.setColumns(10);
 		
-		btnConsultar = new JButton("Consultar");
-		btnConsultar.addActionListener(new ActionListener() {
+		
+		btnBuscarM  = new JButton("Buscar en Matriz");
+		btnBuscarM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				FormBuscarMatriz newframe = new FormBuscarMatriz();
+				newframe.setMatriz(matrizOrtogonal);
+				newframe.setVisible(true);
 			}
-		});
-		btnConsultar.setBounds(148, 533, 85, 21);
-		contentPane.add(btnConsultar);
+			
+		});btnBuscarM.setBounds(273, 471, 150, 23);
+		contentPane.add(btnBuscarM);
+		
+		lblMensajeModelo = new JLabel("");
+		lblMensajeModelo.setLabelFor(textModelo);
+		lblMensajeModelo.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 10));
+		lblMensajeModelo.setBounds(165, 331, 258, 13);
+		contentPane.add(lblMensajeModelo);
+		
+		lblMensajePlaca = new JLabel("");
+		lblMensajePlaca.setLabelFor(textPlaca);
+		lblMensajePlaca.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 10));
+		lblMensajePlaca.setBounds(165, 281, 258, 13);
+		contentPane.add(lblMensajePlaca);
+		
+		lblMensajeLinea = new JLabel("");
+		lblMensajeLinea.setLabelFor(textLinea);
+		lblMensajeLinea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 10));
+		lblMensajeLinea.setBounds(165, 377, 258, 13);
+		contentPane.add(lblMensajeLinea);
+		
+		lblMensajeColor = new JLabel("");
+		lblMensajeColor.setLabelFor(textColor);
+		lblMensajeColor.setBounds(165, 424, 258, 13);
+		contentPane.add(lblMensajeColor);
+		
+		lblMensajeProp = new JLabel("");
+		lblMensajeProp.setLabelFor(textPropietario);
+		lblMensajeProp.setBounds(165, 244, 261, 13);
+		contentPane.add(lblMensajeProp);
+		
+		lblMensajeParqueos = new JLabel("");
+		lblMensajeParqueos.setLabelFor(textFila);
+		lblMensajeParqueos.setEnabled(false);
+		lblMensajeParqueos.setBounds(56, 505, 355, 13);
+		contentPane.add(lblMensajeParqueos);
+		
 	}
 }

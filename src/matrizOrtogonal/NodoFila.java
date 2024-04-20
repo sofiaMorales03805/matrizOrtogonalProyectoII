@@ -34,6 +34,11 @@ public class NodoFila {
 	public void setDerecha(NodoColumna derecha) {
 		this.derecha = derecha;
 	}
+
+	public Automovil getAutomovil() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
 }
