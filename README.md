@@ -80,6 +80,8 @@ Al momento de presionar “Buscar”, este estaría mostrando la información en
 
 El botón de “Regresar” te permite regresar a la ventana anterior, es decir al menú principal donde se ingresan los datos del parqueo, al momento de presionar este botón de forma automática cerrará la pestaña actual de búsqueda en parqueo. 
 
+![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/166673675/efe2a856-3aa6-4a9e-9a0b-92d6cba14372)
+
 ![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/9546826c-0007-4616-8ff2-59e44a556ed3)
 
 Botones funcionales dentro del menú principal:
