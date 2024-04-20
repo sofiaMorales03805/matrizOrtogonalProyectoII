@@ -76,7 +76,7 @@ Al presionar el botón antes mencionado de Buscar en Matriz abrirá una nueva ve
 ![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/72fefb7a-803d-4945-a546-a9c3a7856022)
 Al momento de presionar “Buscar”, este estaría mostrando la información en la siguiente tabla, si en dado caso el dato buscado es encontrado, de lo contrario no mostrará ninguna información. 
 
-![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/764a1d9d-1e06-4e25-99b4-1b9cfa3aa14c)
+![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/166673675/f0103e46-8529-4b7b-9dca-f25c90204dd5)
 
 El botón de “Regresar” te permite regresar a la ventana anterior, es decir al menú principal donde se ingresan los datos del parqueo, al momento de presionar este botón de forma automática cerrará la pestaña actual de búsqueda en parqueo. 
 
