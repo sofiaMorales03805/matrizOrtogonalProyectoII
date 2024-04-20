@@ -71,10 +71,9 @@ Opción de búsqueda en matriz.
 
 ![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/541ab866-80e6-4794-98c6-d6fa9a9e9e03)
 
-Al presionar el botón antes mencionado de Buscar en Matriz abrirá una nueva ventana para poder realizar la búsqueda por alguno de los datos ingresados que son Propietario, placa, modelo, línea, color. 
+Al presionar el botón antes mencionado de Buscar en Matriz abrirá una nueva ventana para poder realizar la búsqueda por alguno de los datos ingresados que son Color y Placa.
 
-![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/da6c26ca-d583-4fbe-919e-6e5dde6fcd3a)
-
+![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/72fefb7a-803d-4945-a546-a9c3a7856022)
 Al momento de presionar “Buscar”, este estaría mostrando la información en la siguiente tabla, si en dado caso el dato buscado es encontrado, de lo contrario no mostrará ninguna información. 
 
 ![image](https://github.com/sofiaMorales3805/matrizOrtogonalProyectoII/assets/109783605/764a1d9d-1e06-4e25-99b4-1b9cfa3aa14c)
